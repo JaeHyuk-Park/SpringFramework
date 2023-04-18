@@ -1,0 +1,159 @@
+https://mvnrepository.com/
+====================================
+	<properties>
+		<org.springframework-version> 4.2.1.RELEASE </org.springframework-version>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	</dependencies>
+====================================
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee    http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+
+
+</web-app>
+
+
+
+================================
+
+
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+==================================
+
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd    http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd    http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd    http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+</beans>
+
+==========================
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd    http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd    http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd    http://www.springframework.org/schema/jee
+http://www.springframework.org/schema/jee/spring-jee.xsd    http://www.springframework.org/schema/lang
+http://www.springframework.org/schema/lang/spring-lang.xs    http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd    http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util.xsd    http://www.springframework.org/schema/task
+http://www.springframework.org/schema/task/spring-task.xsd">
+
+
+
+
+</beans>
+===============================
+
+
+
+
+           <context:include-filter type="annotation"
+                           expression="org.springframework.stereotype.Repository" />
+                  <context:include-filter type="annotation"
+                           expression="org.springframework.stereotype.Service" />
+                  <context:include-filter type="annotation"
+                           expression="org.springframework.stereotype.Component" />
+
+==============================
+
+<filter>
+	<filter-name>encodingFilter</filter-name>
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+
+
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+
+
+	<init-param>
+		<param-name>forceEncoding</param-name>
+		<param-value>true</param-value>
+	</init-param>
+</filter>
+
+
+
+<filter-mapping>
+	<filter-name>encodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+============================
+
+
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.40</version>
+</dependency>
+
+
+===================================
+         <context-param>
+                  <param-name>contextConfigLocation</param-name>
+                  <param-value>/WEB-INF/applicationContext.xml</param-value>
+
+         </context-param>
+        <listener>
+
+                  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+
+         </listener>
+

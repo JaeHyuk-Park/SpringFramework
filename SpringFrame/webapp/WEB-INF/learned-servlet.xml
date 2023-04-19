@@ -14,4 +14,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 <context:annotation-config></context:annotation-config>
 <context:component-scan base-package="learnup_pm_manager"></context:component-scan>
 
+<mvc:annotation-driven />
+<mvc:default-servlet-handler />
+
 </beans>

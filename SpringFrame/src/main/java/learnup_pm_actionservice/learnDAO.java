@@ -59,5 +59,43 @@ public class learnDAO {
 		return item; 
 	}
 
+	public void insert(board item) {
+		databases();
+		try {
+			exe = connect.createStatement();
+			String s = "insert into function.board(name, title) values('"+item.getName()+"', '"+item.getTitle()+"')";
+			exe.executeUpdate(s);
+		}catch(Exception e) {
+			System.out.println(e+"오류입니다.");
+		}finally {
+			try {
+				connect.close();
+				exe.close();
+			}catch(Exception eo) {
+				System.out.println(eo+"오류입니다.");
+			}
+		}
+	}
+
+	public void delete(Integer num) {
+		// TODO Auto-generated method stub
+		databases();
+		try {
+			exe = connect.createStatement();
+			String s = "delete from function.board where num="+num+"";
+			exe.executeUpdate(s);
+		}catch(Exception e) {
+			System.out.println(e+"오류입니다.");
+		}finally {
+			try {
+				connect.close();
+				exe.close();
+			}catch(Exception eo) {
+				System.out.println(eo+"오류입니다.");
+			}
+		}
+	}
+	
+
 	
 }

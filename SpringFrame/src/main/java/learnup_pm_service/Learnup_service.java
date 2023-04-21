@@ -1,6 +1,6 @@
 package learnup_pm_service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +14,8 @@ public class Learnup_service {
 	@Autowired
 	learnDAO data;
 	
-	public ArrayList<board> learnup_dataselect(){
-		ArrayList<board> item = data.fullselect();
+	public List<board> learnup_dataselect(){
+		List<board> item = data.fullselect();
 		return item;
 	}
 	

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>정보 확인</title>
 </head>
 <style>
 td{
@@ -16,13 +16,8 @@ td{
 
 </style>
 <body>
-	<form action="/SpringFrame/insert" method="post">
-		이름 : <input type="text" name="name" placeholder="이름을 입력하세요."><br><br>
-		제목 : <input type="text" name="title" placeholder="제목을 입력하세요."><br><br>
-		<input type="submit" value="제출하기">
-	</form>
-	<br><br>
-	
+	<h2>정보 확인</h2>
+
 	<table border="1" cellspacing="0">
 	<tr>
 	<td>번호</td>
@@ -42,6 +37,8 @@ td{
 	</c:forEach>
 	</table>
 	
+	<br>
+	<input type="button" value="정보 입력하러 가기" onclick="location.href='ohyeahinsert'">
 	
 </body>
 </html>

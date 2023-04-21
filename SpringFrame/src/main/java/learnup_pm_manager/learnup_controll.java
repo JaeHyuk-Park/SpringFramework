@@ -1,6 +1,6 @@
 package learnup_pm_manager;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +31,16 @@ public class learnup_controll {
 	@RequestMapping("/info")
 	public String learnup_view(Model items) {
 //		ArrayList<board> item = data.fullselect();
-		ArrayList<board> item = service.learnup_dataselect();
+		List<board> item = service.learnup_dataselect();
 		items.addAttribute("item", item);
 
 		return "/WEB-INF/learnup/ohyeah.jsp";
-
+	}
+	
+	@RequestMapping("/ohyeahinsert")
+	public String ohyeah_insert(){
+		
+		return "/WEB-INF/learnup/ohyeahinsert.jsp";
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)

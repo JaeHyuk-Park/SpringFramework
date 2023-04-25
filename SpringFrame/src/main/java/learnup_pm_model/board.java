@@ -3,8 +3,14 @@ package learnup_pm_model;
 
 public class board {
 	int num;
-	String name, title, date;
+	String name, title, date, nickname;
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getNum() {
 		return num;
 	}

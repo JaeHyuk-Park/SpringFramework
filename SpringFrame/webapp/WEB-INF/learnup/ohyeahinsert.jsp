@@ -6,9 +6,11 @@
 <title>정보 입력</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 	<form action="/SpringFrame/insert" method="post">
 		이름 : <input type="text" name="name" placeholder="이름을 입력하세요."><br><br>
 		제목 : <input type="text" name="title" placeholder="제목을 입력하세요."><br><br>
+		<input type="hidden" name="nickname" value="<%= (String)session.getAttribute("nickname")%>">
 		<input type="submit" value="제출하기">
 	</form>
 </body>

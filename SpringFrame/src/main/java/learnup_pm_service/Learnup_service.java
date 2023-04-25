@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import learnup_pm_actionservice.learnDAO;
 import learnup_pm_model.board;
+import learnup_pm_model.logincheck;
 
 @Service
 public class Learnup_service {
@@ -25,5 +26,11 @@ public class Learnup_service {
 	
 	public void learnup_datadelete(Integer num) {
 		data.delete(num);
+	}
+
+	public logincheck login_check(logincheck item) {
+		logincheck check = data.logincheck(item);
+		return check;
+		
 	}
 }

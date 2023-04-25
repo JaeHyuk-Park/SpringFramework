@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import learnup_pm_model.board;
+import learnup_pm_model.logincheck;
 
 @Repository
 public class learnDAO {
@@ -37,6 +38,11 @@ public class learnDAO {
 	
 	public void delete(Integer num) {
 		sqls.delete("delete", num);
+	}
+
+	public logincheck logincheck(logincheck item) {
+		logincheck check = sqls.selectOne("logincheck", item);
+		return check;
 	}
 	
 //	public void databases() {

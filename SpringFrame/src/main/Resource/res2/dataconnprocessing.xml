@@ -4,7 +4,7 @@
 
 <mapper namespace="dated">
 	<insert id="insert" parameterType="learnup_pm_model.board">
-		insert into board(name, title) values(#{name}, #{title});
+		insert into board(name, title, nickname) values(#{name}, #{title}, #{nickname});
 	</insert>
 	
 	<select id="full" resultType="learnup_pm_model.board">
@@ -14,4 +14,8 @@
 	<delete id="delete" parameterType="Integer">
 		delete from board where num = #{num};
 	</delete>
+	
+	<select id="logincheck" parameterType="learnup_pm_model.logincheck" resultType="learnup_pm_model.logincheck">
+		select*from information where email = #{email};
+	</select>
 </mapper>

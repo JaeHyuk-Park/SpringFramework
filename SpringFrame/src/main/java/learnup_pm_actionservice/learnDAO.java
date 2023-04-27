@@ -44,6 +44,11 @@ public class learnDAO {
 		logincheck check = sqls.selectOne("logincheck", item);
 		return check;
 	}
+
+	public board detail_select(Integer num) {
+		board item = sqls.selectOne("detailselect", num);
+		return item;
+	}
 	
 //	public void databases() {
 //		try {

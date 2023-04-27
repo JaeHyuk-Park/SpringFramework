@@ -23,17 +23,16 @@ td{
 	<tr>
 	<td>글 번호</td>
 	<td>제목</td>
+	<td>내용</td>
 	<td>작성자</td>
-	<td>작성일</td>
+	<td>작성일시</td>
 	</tr>
-	<c:forEach items="${item}" var="i">
-	<tr>
-	<td>${i.num}</td>
-	<td><a href="/SpringFrame/ohyeahdetail?num=${i.num}">${i.title}</a></td>
-	<td>${i.nickname}</td>
-	<td>${i.date}</td>
-	</tr>
-	</c:forEach>
+	<td>${item.num}</td>
+	<td>${item.title}</td>
+	<td>${item.descript}</td>
+	<td>${item.nickname}</td>
+	<td>${item.date}</td>
+	
 	</table>
 	
 	<br>
@@ -43,8 +42,16 @@ td{
 		</script>
 		<% response.sendRedirect("/SpringFrame/"); %>
 	</c:if>
-	
-	<input type="button" value="정보 입력하러 가기" onclick="location.href='ohyeahinsert'">
+
+	<c:if test="${sessionScope.nickname eq item.nickname}">
+		<form action="/SpringFrame/delete" method="post">
+			<input type="hidden" name="num" value="${item.num}"> 
+			<input type="submit" value="게시글 삭제">
+		</form>
+	</c:if>
+	<br>
+
+	<input type="button" value="메인 화면으로" onclick="location.href='info'">
 
 </body>
 </html>

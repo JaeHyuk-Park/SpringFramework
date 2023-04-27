@@ -40,4 +40,11 @@ http://www.springframework.org/schema/task/spring-task.xsd">
         <constructor-arg index="0" ref="sqlSessionFactory" />
 </bean>
 
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="defaultEncoding" value="UTF-8" />
+	<property name="maxUploadSize" value="52428800" /> <!-- 50MB -->
+	<property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+</bean>
+
+
 </beans>

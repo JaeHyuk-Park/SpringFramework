@@ -4,11 +4,11 @@
 
 <mapper namespace="dated">
 	<insert id="insert" parameterType="learnup_pm_model.board">
-		insert into board(name, title, nickname) values(#{name}, #{title}, #{nickname});
+		insert into board(title, descript, nickname) values(#{title}, #{descript}, #{nickname});
 	</insert>
 	
 	<select id="full" resultType="learnup_pm_model.board">
-		select*from board;
+		select num, title, nickname, date_format(date, '%Y년 %m월 %d일') as 'date' from board;
 	</select>
 	
 	<delete id="delete" parameterType="Integer">
@@ -17,5 +17,9 @@
 	
 	<select id="logincheck" parameterType="learnup_pm_model.logincheck" resultType="learnup_pm_model.logincheck">
 		select*from information where email = #{email};
+	</select>
+	
+	<select id="detailselect" parameterType="Integer" resultType="learnup_pm_model.board">
+		select num, title, descript, nickname, date_format(date, '%Y년 %m월 %d일 %T') as 'date' from board where num = #{num};
 	</select>
 </mapper>

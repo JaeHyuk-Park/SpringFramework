@@ -1,10 +1,22 @@
 package learnup_pm_model;
 
-
 public class board {
 	int num;
-	String name, title, date, nickname;
+	String title, descript, date, nickname, file;
 	
+	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public String getDescript() {
+		return descript;
+	}
+	public void setDescript(String descript) {
+		this.descript = descript;
+	}
 	public String getNickname() {
 		return nickname;
 	}
@@ -16,12 +28,6 @@ public class board {
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getTitle() {
 		return title;

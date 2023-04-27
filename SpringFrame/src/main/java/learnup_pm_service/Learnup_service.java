@@ -33,4 +33,9 @@ public class Learnup_service {
 		return check;
 		
 	}
+
+	public board learnup_datailselect(Integer num) {
+		board item = data.detail_select(num);
+		return item;
+	}
 }

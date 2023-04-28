@@ -9,6 +9,18 @@
 <title>정보 확인</title>
 </head>
 <style>
+body{
+	margin:0;
+	overflow-x : hidden;
+}
+div#allitem{
+	width:600px;
+	margin: 40px auto;
+	text-align:center;
+}
+div#allitem table{
+	width:100%;
+}
 td{
 	text-align:center;
 	padding:10px;
@@ -17,6 +29,8 @@ td{
 </style>
 <body>
 	<jsp:include page="header.jsp"/>
+	
+	<div id="allitem">
 	<h2>정보 확인</h2>
 
 	<table border="1" cellspacing="0">
@@ -45,6 +59,7 @@ td{
 	</c:if>
 	
 	<input type="button" value="정보 입력하러 가기" onclick="location.href='ohyeahinsert'">
+	</div>
 
 </body>
 </html>

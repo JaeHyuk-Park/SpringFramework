@@ -14,13 +14,44 @@
 		alert("비밀번호를 확인해주세요.");
 	}
 </script>
+<style>
+body{
+	margin:0;
+	overflow-x : hidden;
+}
+div#login{
+	width:400px;
+	margin: 300px auto 200px auto;
+    text-align: center;
+}
+div#login input.text{
+	width:98%;
+	height: 40px;
+	padding: 1px 5px;
+    border-radius: 5px;
+    background: center;
+    border: 2px solid #A6A6A6;
+    font-weight: bold;
+}
+input[value="로그인"]{
+	cursor:pointer;
+	width:406px;
+	height: 44px;
+    border-radius: 5px;
+    background: center;
+    border: 2px solid #A6A6A6;
+    font-weight: bold;
+}
+</style>
 <body>
+	<div id="login">
 	<h2>로그인 페이지</h2>
 	<form action="/SpringFrame/logincheck" method="post">
-		아이디 : <input type="text" name="email"><br><br>
-		비밀번호 : <input type="password" name="password"><br><br>
+		<input type="text" name="email" placeholder="아이디를 입력해주세요." class="text"><br><br>
+		<input type="password" name="password" placeholder="비밀번호를 입력해주세요." class="text"><br><br>
 		<input type="submit" value="로그인">
 	</form>
+	</div>
 	
 </body>
 </html>

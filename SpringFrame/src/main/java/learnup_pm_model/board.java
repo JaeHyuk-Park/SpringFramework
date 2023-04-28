@@ -2,14 +2,13 @@ package learnup_pm_model;
 
 public class board {
 	int num;
-	String title, descript, date, nickname, file;
+	String title, descript, date, nickname, savefile; 
 	
-	
-	public String getFile() {
-		return file;
+	public String getSavefile() {
+		return savefile;
 	}
-	public void setFile(String file) {
-		this.file = file;
+	public void setSavefile(String savefile) {
+		this.savefile = savefile;
 	}
 	public String getDescript() {
 		return descript;

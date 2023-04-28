@@ -3,9 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
-	<mappers>
-		<mapper resource="res2/dataconnprocessing.xml"/>
-	</mappers>
-
+    <mappers>
+        <mapper resource="res2/dataconnprocessing.xml"/>
+    </mappers>
 </configuration>

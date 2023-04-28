@@ -32,8 +32,8 @@ td{
 	<td>${item.descript}</td>
 	<td>${item.nickname}</td>
 	<td>${item.date}</td>
-	
 	</table>
+	<img src="Springitem/${item.savefile}">
 	
 	<br>
 	<c:if test="${sessionScope.nickname == null}">

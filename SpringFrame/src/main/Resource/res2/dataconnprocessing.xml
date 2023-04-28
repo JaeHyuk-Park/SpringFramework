@@ -4,7 +4,7 @@
 
 <mapper namespace="dated">
 	<insert id="insert" parameterType="learnup_pm_model.board">
-		insert into board(title, descript, nickname) values(#{title}, #{descript}, #{nickname});
+		insert into board(title, descript, nickname, file) values(#{title}, #{descript}, #{nickname}, #{savefile});
 	</insert>
 	
 	<select id="full" resultType="learnup_pm_model.board">
@@ -20,6 +20,6 @@
 	</select>
 	
 	<select id="detailselect" parameterType="Integer" resultType="learnup_pm_model.board">
-		select num, title, descript, nickname, date_format(date, '%Y년 %m월 %d일 %T') as 'date' from board where num = #{num};
+		select num, title, descript, nickname, file as 'savefile', date_format(date, '%Y년 %m월 %d일 %T') as 'date' from board where num = #{num};
 	</select>
 </mapper>

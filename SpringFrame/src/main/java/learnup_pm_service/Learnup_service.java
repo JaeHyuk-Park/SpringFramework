@@ -15,8 +15,8 @@ public class Learnup_service {
 	@Autowired
 	learnDAO data;
 	
-	public List<board> learnup_dataselect(){
-		List<board> item = data.fullselect();
+	public List<board> learnup_dataselect(int startrow){
+		List<board> item = data.fullselect(startrow);
 		return item;
 	}
 	
@@ -37,5 +37,10 @@ public class Learnup_service {
 	public board learnup_datailselect(Integer num) {
 		board item = data.detail_select(num);
 		return item;
+	}
+
+	public int getListCount() {
+		int listCount = data.selectListCount();
+		return listCount;
 	}
 }

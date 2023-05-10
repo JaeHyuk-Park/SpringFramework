@@ -26,8 +26,8 @@ public class learnDAO {
 	Statement exe = null;
 	ResultSet iot = null;
 
-	public List<board> fullselect(){
-		List<board> item = sqls.selectList("full");
+	public List<board> fullselect(int startrow){
+		List<board> item = sqls.selectList("full", startrow);
 		//sqls.close();
 		return item;
 	}
@@ -48,6 +48,11 @@ public class learnDAO {
 	public board detail_select(Integer num) {
 		board item = sqls.selectOne("detailselect", num);
 		return item;
+	}
+
+	public int selectListCount() {
+		int listcount = sqls.selectOne("countboard");
+		return listcount;
 	}
 	
 //	public void databases() {

@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import learnup_pm_actionservice.learnDAO;
+import learnup_pm_model.PageInfo;
 import learnup_pm_model.board;
 import learnup_pm_model.logincheck;
 import learnup_pm_service.Learnup_service;
@@ -72,10 +75,38 @@ public class learnup_controll {
 
 	// 데이터 전체 보이게 하는 것
 	@RequestMapping("/info")
-	public String learnup_view(Model items) {
+	public String learnup_view(Model items, HttpServletRequest request) {
 //		ArrayList<board> item = data.fullselect();
-		List<board> item = service.learnup_dataselect();
+		int page = 1;
+		int limit = 10;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		
+		int startrow = (page-1)*10;
+		int listCount = service.getListCount();
+		int maxPage = (int) ((double) listCount / limit + 0.95);
+		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+		int endPage = startPage + 10 - 1;
+
+		if (endPage > maxPage) {
+			endPage = maxPage;
+		}
+			
+
+		PageInfo pageInfo = new PageInfo();
+		pageInfo.setEndPage(endPage);
+		pageInfo.setListCount(listCount);
+		pageInfo.setMaxPage(maxPage);
+		pageInfo.setPage(page);
+		pageInfo.setStartPage(startPage);
+		
+		List<board> item = service.learnup_dataselect(startrow);
+		
 		items.addAttribute("item", item);
+		items.addAttribute("pageInfo", pageInfo);
 
 		return "/WEB-INF/learnup/ohyeah.jsp";
 	}

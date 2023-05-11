@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import learnup_pm_model.board;
+import learnup_pm_model.Board;
 import learnup_pm_model.logincheck;
 
 @Repository
@@ -26,13 +26,18 @@ public class learnDAO {
 	Statement exe = null;
 	ResultSet iot = null;
 
-	public List<board> fullselect(int startrow){
-		List<board> item = sqls.selectList("full", startrow);
+	public List<Board> fullselect(int startrow){
+		List<Board> item = sqls.selectList("full", startrow);
 		//sqls.close();
 		return item;
 	}
 	
-	public void insert(board item) {
+	public List<Board> datasearchselect(Board board) {
+		List<Board> item = sqls.selectList("searchselect", board);
+		return item;
+	}
+	
+	public void insert(Board item) {
 		sqls.insert("insert", item);
 	}
 	
@@ -45,13 +50,18 @@ public class learnDAO {
 		return check;
 	}
 
-	public board detail_select(Integer num) {
-		board item = sqls.selectOne("detailselect", num);
+	public Board detail_select(Integer num) {
+		Board item = sqls.selectOne("detailselect", num);
 		return item;
 	}
 
 	public int selectListCount() {
 		int listcount = sqls.selectOne("countboard");
+		return listcount;
+	}
+
+	public int selectsearchListCount(String parameter) {
+		int listcount = sqls.selectOne("searchlistboard", parameter);
 		return listcount;
 	}
 	

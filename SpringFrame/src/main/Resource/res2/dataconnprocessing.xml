@@ -3,12 +3,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dated">
-	<insert id="insert" parameterType="learnup_pm_model.board">
+	<insert id="insert" parameterType="learnup_pm_model.Board">
 		insert into board(title, descript, nickname, file) values(#{title}, #{descript}, #{nickname}, #{savefile});
 	</insert>
 	
-	<select id="full" resultType="learnup_pm_model.board" parameterType="Integer">
+	<select id="full" resultType="learnup_pm_model.Board" parameterType="Integer">
 		select num, title, nickname, date_format(date, '%Y년 %m월 %d일') as 'date' from board order by num asc limit #{startrow}, 10;
+	</select>
+	
+	<select id="searchselect" resultType="learnup_pm_model.Board" parameterType="learnup_pm_model.Board">
+		select num, title, nickname, date_format(date, '%Y년 %m월 %d일') as 'date' from function.board where title like CONCAT('%',#{search},'%') order by num asc limit #{startrow}, 10;
 	</select>
 	
 	<delete id="delete" parameterType="Integer">
@@ -19,11 +23,15 @@
 		select*from information where email = #{email};
 	</select>
 	
-	<select id="detailselect" parameterType="Integer" resultType="learnup_pm_model.board">
+	<select id="detailselect" parameterType="Integer" resultType="learnup_pm_model.Board">
 		select num, title, descript, nickname, file as 'savefile', date_format(date, '%Y년 %m월 %d일 %T') as 'date' from board where num = #{num};
 	</select>
 	
 	<select id="countboard" resultType="Integer">
 		select count(*) from board;
+	</select>
+	
+	<select id="searchlistboard" resultType="Integer" parameterType="String">
+		select count(*) from board where title like CONCAT('%', #{parameter}, '%');
 	</select>
 </mapper>

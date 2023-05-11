@@ -12,14 +12,14 @@
 		<script>
 			alert("로그인 정보가 없습니다.");
 		</script>
-		<% response.sendRedirect("/SpringFrame/"); %>
+		<c:redirect url="/" />
 	</c:if>
 	<form action="/SpringFrame/insert" method="post" enctype="multipart/form-data">
 		제목 : <input type="text" name="title" placeholder="이름을 입력하세요."><br><br>
 		내용 : <input type="text" name="descript" placeholder="제목을 입력하세요."><br><br>
 		파일첨부<br>
 		<input type="file" name="file">
-		<input type="hidden" name="nickname" value="<%= (String)session.getAttribute("nickname")%>">
+		<input type="hidden" name="nickname" value="<c:out value="${sessionScope.nickname}" />">
 		<input type="submit" value="제출하기">
 	</form>
 </body>

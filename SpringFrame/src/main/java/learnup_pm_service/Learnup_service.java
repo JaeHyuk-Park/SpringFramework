@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import learnup_pm_actionservice.learnDAO;
-import learnup_pm_model.board;
+import learnup_pm_model.Board;
 import learnup_pm_model.logincheck;
 
 @Service
@@ -15,12 +15,17 @@ public class Learnup_service {
 	@Autowired
 	learnDAO data;
 	
-	public List<board> learnup_dataselect(int startrow){
-		List<board> item = data.fullselect(startrow);
+	public List<Board> learnup_dataselect(int startrow){
+		List<Board> item = data.fullselect(startrow);
 		return item;
 	}
 	
-	public void learnup_datainsert(board item) {
+	public List<Board> datasearchselect(Board board) {
+		List<Board> item = data.datasearchselect(board);
+		return item;
+	}
+	
+	public void learnup_datainsert(Board item) {
 		data.insert(item);
 	}
 	
@@ -34,8 +39,8 @@ public class Learnup_service {
 		
 	}
 
-	public board learnup_datailselect(Integer num) {
-		board item = data.detail_select(num);
+	public Board learnup_datailselect(Integer num) {
+		Board item = data.detail_select(num);
 		return item;
 	}
 
@@ -43,4 +48,11 @@ public class Learnup_service {
 		int listCount = data.selectListCount();
 		return listCount;
 	}
+
+	public int getsearchListCount(String parameter) {
+		int listCount = data.selectsearchListCount(parameter);
+		return listCount;
+	}
+
+	
 }

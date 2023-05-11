@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@ div#head{
 	<form>
 		<input type="button" value="로그아웃" onclick="location.href='/SpringFrame/logout'">
 	</form><br>
-	<%= (String)session.getAttribute("nickname") %>님 환영합니다.
+	<c:out value="${sessionScope.nickname}" />님 환영합니다.
 	</div>
 </body>
 </html>

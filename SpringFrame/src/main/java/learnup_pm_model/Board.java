@@ -1,9 +1,22 @@
 package learnup_pm_model;
 
-public class board {
-	int num;
-	String title, descript, date, nickname, savefile; 
+public class Board {
+	int num, startrow;
+	String title, descript, date, nickname, savefile, search; 
 	
+	
+	public int getStartrow() {
+		return startrow;
+	}
+	public void setStartrow(int startrow) {
+		this.startrow = startrow;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public String getSavefile() {
 		return savefile;
 	}

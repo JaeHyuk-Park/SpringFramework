@@ -40,7 +40,7 @@ td{
 		<script>
 			alert("로그인 정보가 없습니다.");
 		</script>
-		<% response.sendRedirect("/SpringFrame/"); %>
+		<c:redirect url="/" />
 	</c:if>
 
 	<c:if test="${sessionScope.nickname eq item.nickname}">

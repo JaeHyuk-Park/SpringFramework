@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import learnup_pm_actionservice.learnDAO;
 import learnup_pm_model.PageInfo;
-import learnup_pm_model.board;
+import learnup_pm_model.Board;
 import learnup_pm_model.logincheck;
 import learnup_pm_service.Learnup_service;
 
@@ -34,6 +33,7 @@ public class learnup_controll {
 	Learnup_service service;
 	@Autowired
 	ServletContext context;
+	
 	
 	//로그인 페이지
 	@RequestMapping("/")
@@ -79,14 +79,20 @@ public class learnup_controll {
 //		ArrayList<board> item = data.fullselect();
 		int page = 1;
 		int limit = 10;
-
+		
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 
 		
 		int startrow = (page-1)*10;
-		int listCount = service.getListCount();
+		int listCount = 0;
+		if(request.getParameter("searchtext") != null) {
+			listCount = service.getsearchListCount(request.getParameter("searchtext"));
+		}else {
+			listCount = service.getListCount();
+		}
+		
 		int maxPage = (int) ((double) listCount / limit + 0.95);
 		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
 		int endPage = startPage + 10 - 1;
@@ -103,10 +109,19 @@ public class learnup_controll {
 		pageInfo.setPage(page);
 		pageInfo.setStartPage(startPage);
 		
-		List<board> item = service.learnup_dataselect(startrow);
-		
-		items.addAttribute("item", item);
-		items.addAttribute("pageInfo", pageInfo);
+		if(request.getParameter("searchtext") != null) {
+			Board board = new Board();
+			board.setSearch(request.getParameter("searchtext"));
+			board.setStartrow(startrow);
+			List<Board> item = service.datasearchselect(board);
+			items.addAttribute("item", item);
+			items.addAttribute("pageInfo", pageInfo);
+			items.addAttribute("search", request.getParameter("searchtext"));
+		}else {
+			List<Board> item = service.learnup_dataselect(startrow);
+			items.addAttribute("item", item);
+			items.addAttribute("pageInfo", pageInfo);
+		}
 
 		return "/WEB-INF/learnup/ohyeah.jsp";
 	}
@@ -119,7 +134,7 @@ public class learnup_controll {
 
 	// 게시글 작성된 데이터 인설트처리
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String learnup_insert(@ModelAttribute board item, @RequestParam("file") MultipartFile fileitem) {
+	public String learnup_insert(@ModelAttribute Board item, @RequestParam("file") MultipartFile fileitem) {
 		// ModelAttribute 뒤에 getter setter 클래스를 들고옴. ModelAttribute 클래스 객체 순으로 쓰면 됨.
 		// input name값과 세터의 이름이 같으면, 알아서 setter를 찾아서 parameter가 들어감.
 		// ex)input name="name"은 data.setName()을 input name="title"은 data.setTitle()을
@@ -157,7 +172,7 @@ public class learnup_controll {
 	// 게시글 상세페이지로 이동
 	@RequestMapping("/ohyeahdetail")
 	public String ohyeah_detail(Model items, @RequestParam Integer num){
-		board item = service.learnup_datailselect(num);
+		Board item = service.learnup_datailselect(num);
 		items.addAttribute("item", item);
 		return "/WEB-INF/learnup/ohyeahdetail.jsp";
 	}

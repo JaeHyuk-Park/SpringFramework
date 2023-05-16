@@ -30,7 +30,7 @@ div#login input.text{
 	padding: 1px 5px;
     border-radius: 5px;
     background: center;
-    border: 2px solid #A6A6A6;
+    border: 2px solid #4374D9; 
     font-weight: bold;
 }
 input[value="로그인"]{
@@ -39,7 +39,7 @@ input[value="로그인"]{
 	height: 44px;
     border-radius: 5px;
     background: center;
-    border: 2px solid #A6A6A6;
+    border: 2px solid #4374D9;
     font-weight: bold;
 }
 </style>
